@@ -80,7 +80,7 @@ public class JavaLook {
             System.out.println("Bienvenido, " + cuenta.getNombre());
             menuPrincipal();
         } else {
-            System.out.println("Credenciales incorrectas.");
+            System.out.println("Credenciales incorrectos.");
         }
     }
 
@@ -115,6 +115,12 @@ public class JavaLook {
         System.out.print("Email del destinatario: ");
         String destino = sc.nextLine();
 
+        // Verificar campo vacio
+        if (destino.isEmpty()) {
+        System.out.println("El email del destinatario no puede estar vacio.");
+        return;
+     }
+
         EmailAccount destinatario = buscarCuenta(destino);
 
         if (destinatario == null) {
@@ -124,13 +130,24 @@ public class JavaLook {
 
         System.out.print("Asunto: ");
         String asunto = sc.nextLine();
+
+        if (asunto.isEmpty()) {
+        System.out.println("El asunto no puede estar vacio.");
+        return;
+        }
+
         System.out.print("Contenido: ");
         String contenido = sc.nextLine();
+
+        if (contenido.isEmpty()) {
+            System.out.println("El contenido no puede estar vacio.");
+            return;
+        }
 
         Email correo = new Email(cuentaActiva.getEmail(), asunto, contenido);
 
         if (destinatario.recibirEmail(correo)) {
-            System.out.println("Correo enviado exitosamente.");
+        System.out.println("Correo enviado exitosamente.");
         } else {
             System.out.println("El inbox del destinatario esta lleno.");
         }

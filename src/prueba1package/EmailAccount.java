@@ -53,16 +53,22 @@ public class EmailAccount {
         for (int i = 0; i < inbox.length; i++) {
             if (inbox[i] != null) {
                 String estado = inbox[i].isRead() ? "LEIDO" : "SIN LEER";
-                System.out.println(i + " - " + inbox[i].getEmisor() + 
-                                   " - " + inbox[i].getAsunto() + 
-                                   " - " + estado);
+             System.out.println(i + " - " + inbox[i].getEmisor() +
+                               " - " + inbox[i].getAsunto() +
+                               " - " + estado);
                 if (!inbox[i].isRead()) sinLeer++;
                 total++;
-            }
+        }
+     }
+
+    
+        if (total == 0) {
+         System.out.println("No hay correos en el inbox.");
+         return;
         }
 
-        System.out.println("Sin leer: " + sinLeer);
-        System.out.println("Total de correos: " + total);
+    System.out.println("Sin leer: " + sinLeer);
+    System.out.println("Total de correos: " + total);
     }
 
     public void leerEmail(int posicion) {
@@ -81,5 +87,5 @@ public class EmailAccount {
             }
         }
         System.out.println("Inbox limpiado.");
-    }
+    }  
 }
